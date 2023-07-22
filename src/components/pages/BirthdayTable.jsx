@@ -1,5 +1,22 @@
 import { useState } from "react";
 import { data } from "../../data";
+import {
+  Button,
+  FormControl,
+  Grid,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  TextField,
+  Typography,
+} from "@mui/material";
+import { grey } from "@mui/material/colors";
+import { CardGiftcardOutlined } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 const ITEMS_PER_PAGE = 10;
 
@@ -26,42 +43,79 @@ export const BirthdayTable = () => {
     setCurrentPage((prevPage) => Math.max(prevPage - 1, 0));
   };
 
+
   return (
-    <div>
-      <h2>Todos los Registros (Tabla Paginada)</h2>
-      <table>
-        <thead>
-          <tr>
-            <th></th>
-            <th>Nombre</th>
-            <th>Departamento</th>
-            <th>Fecha de Ingreso</th>
-            <th>Cumpleaños</th>
-          </tr>
-        </thead>
-        <tbody>
-          {currentDataPage.map((person) => (
-            <tr key={person.nombre}>
-              <td>{person.id}</td>
-              <td>{person.nombre}</td>
-              <td>{person.departamento}</td>
-              <td>{person.fechaIngreso}</td>
-              <td>{person.cumpleanios}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <div>
-        <button onClick={goToPrevPage} disabled={currentPage === 0}>
-          Anterior
-        </button>
-        <button
-          onClick={goToNextPage}
-          disabled={currentPage === totalPages - 1}
+    <>
+      <Grid container>
+        <Grid
+          container
+          direction="row"
+          justifyContent="flex-end"
+          alignItems="flex-end"
         >
-          Siguiente
-        </button>
-      </div>
-    </div>
+          <FormControl className="d-flex mb-2 col-4" role="search">
+            <TextField
+              label="Buscar cumpleañero..."
+              type="text"
+              name="search"
+              margin="dense"
+              variant="outlined"
+              color="error"
+            />
+          </FormControl>
+        </Grid>
+
+        <Typography>Todos los cumpleañeros 📅 🎉 🥳 🎂</Typography>
+        <TableContainer component={Paper}>
+          <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+            <TableHead>
+              <TableRow>
+                <TableCell></TableCell>
+                <TableCell>Nombre</TableCell>
+                <TableCell>Cumpleaños</TableCell>
+                <TableCell>Teléfono</TableCell>
+                <TableCell>Enviar tarjeta</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {currentDataPage.map((person) => (
+                <TableRow
+                  key={person.nombre}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell>{person.id}</TableCell>
+                  <TableCell>{person.nombre}</TableCell>
+                  <TableCell>{person.cumpleanios}</TableCell>
+                  <TableCell>{person.departamento}</TableCell>
+                  <TableCell>
+                    <Link to={`/greetingCard/${person.id}`} className="btn">
+                      <Button
+                        size="small"
+                        variant="contained"
+                        sx={{ color: grey[50] }}
+                        startIcon={<CardGiftcardOutlined />}
+                      >
+                        Enviar tarjeta
+                      </Button>
+                    </Link>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <Grid>
+          <Button onClick={goToPrevPage} disabled={currentPage === 0}>
+            Anterior
+          </Button>
+          <Button
+            onClick={goToNextPage}
+            disabled={currentPage === totalPages - 1}
+          >
+            Siguiente
+          </Button>
+        </Grid>
+      </Grid>
+    </>
   );
 };

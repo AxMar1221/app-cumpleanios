@@ -1,16 +1,11 @@
-
-import { BirthdayOfTheDay } from "./components/pages/BirthdayOftheDay"
-import { BirthdayTable } from "./components/pages/BirthdayTable"
-import { BirthdaysOfMonth } from "./components/pages/BirthdaysOfMonth"
+import { AppRouter } from "./router/AppRouter"
 
 
 function App() {
 
   return (
     <>
-      <BirthdayTable />
-      <BirthdaysOfMonth />
-      <BirthdayOfTheDay />
+      <AppRouter />
     </>
   )
 }
