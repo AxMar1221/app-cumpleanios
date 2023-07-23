@@ -17,10 +17,12 @@ import {
 } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import {
+  CakeOutlined,
   CardGiftcardOutlined,
   CelebrationOutlined,
   NavigateBeforeOutlined,
   NavigateNextOutlined,
+  WhatsApp,
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 
@@ -33,7 +35,7 @@ export const BirthdayTable = () => {
 
   const startIndex = currentPage * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-
+  const rowStart = currentPage * itemsPerPage + 1;
   const totalPages = Math.ceil(data.length / itemsPerPage);
 
   const goToNextPage = () => {
@@ -71,6 +73,13 @@ export const BirthdayTable = () => {
 
   const displayData = search ? filterData : data;
   const currentDataPages = displayData.slice(startIndex, endIndex);
+
+
+  const sendWhatsMessage = (phone) => {
+    const message = '¡Feliz cumpleaños!';
+    const whatsURL = `https://api.whatsapp.com/send/?phone=+52${phone}&text=${encodeURIComponent(message)}`;
+    window.open(whatsURL, "_blank");
+  };
 
   return (
     <>
@@ -118,20 +127,20 @@ export const BirthdayTable = () => {
               >
                 <TableHead>
                   <TableRow>
-                    <TableCell align="center"></TableCell>
-                    <TableCell align="center">Nombre</TableCell>
+                    <TableCell></TableCell>
+                    <TableCell align="left">Nombre</TableCell>
                     <TableCell align="center">Cumpleaños</TableCell>
                     <TableCell align="center">Teléfono</TableCell>
                     <TableCell align="center">Enviar tarjeta</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {currentDataPages.map((person) => (
+                  {currentDataPages.map((person, index) => (
                     <TableRow
                       key={person.nombre}
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                     >
-                      <TableCell align="center">{person.id}</TableCell>
+                      <TableCell align="center">{rowStart + index}</TableCell>
                       <TableCell align="left">{person.nombre}</TableCell>
                       <TableCell align="center">
                         <Button
@@ -141,13 +150,35 @@ export const BirthdayTable = () => {
                           startIcon={<CelebrationOutlined />}
                         >
                           {person.cumpleanios}
+                          <CakeOutlined fontSize="small" />
                         </Button>
                       </TableCell>
                       <TableCell align="center">
-                        {person.departamento}
+                        {person.telefono.trim() !== "" ? (
+                          <Button
+                            color="success"
+                            size="small"
+                            variant="contained"
+                            sx={{ color: grey[50] }}
+                            startIcon={<WhatsApp />}
+                            onClick={() => sendWhatsMessage(person.telefono)}
+
+                          >
+                            Enviar WhatsApp
+                          </Button>
+                        ) : (
+                          <Button
+                            color="error"
+                            size="small"
+                            variant="contained"
+                            sx={{ color: grey[50] }}
+                          >
+                            N/A
+                          </Button>
+                        )}
                       </TableCell>
                       <TableCell align="center">
-                        <Link to={`/greetingCard/${person.id}`} className="btn">
+                        <Link to={`/greetingCard/${person.nombre}`} className="btn">
                           <Button
                             size="small"
                             variant="contained"
