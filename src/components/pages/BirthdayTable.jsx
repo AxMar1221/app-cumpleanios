@@ -126,12 +126,12 @@ export const BirthdayTable = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {currentDataPages.map((person) => (
+                  {currentDataPages.map((person, index) => (
                     <TableRow
                       key={person.nombre}
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                     >
-                      <TableCell align="center">{person.id}</TableCell>
+                      <TableCell align="center">{index + 1}</TableCell>
                       <TableCell align="left">{person.nombre}</TableCell>
                       <TableCell align="center">
                         <Button
