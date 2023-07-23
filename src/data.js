@@ -1,170 +1,165 @@
 export const data = [
+  // cumpleaños de prueba 
   {
-    id:"1",
-    nombre: "Mario",
-    departamento: "Desarrollo",
-    fechaIngreso: "03-10-2022",
-    cumpleanios: "28-04-1983",
+    nombre: "HOY ES MI CUMPLE",
+    cumpleanios: "23-07",
+    telefono: "2222592173"
+  },
+  // cumpleaños de abril 
+  {
+    nombre : "Rulas HRJ",
+    cumpleanios : "28-04",
+    telefono : "2212723058"
   },
   {
-    id:"2",
-    nombre: "Elvira",
-    departamento: "Ventas",
-    fechaIngreso: "16-07-2022",
-    cumpleanios: "14-11-1995",
+    nombre : "Tachidito",
+    cumpleanios : "28-04",
+    telefono : "2222592173"
+  },
+  // cumpleaños de mayo 
+  {
+    nombre : "Jair Hernández",
+    cumpleanios : "02-05",
+    telefono : "2224442334"
   },
   {
-    id:"3",
-    nombre: "Axel",
-    departamento: "Soporte",
-    fechaIngreso: "03-10-2022",
-    cumpleanios: "22-07-1988",
+    nombre : "Valo Hernández",
+    cumpleanios : "14-05",
+    telefono : "5534263906"
+  },
+  // cumpleaños de julio 
+  {
+    nombre : "Mayra Ortega",
+    cumpleanios : "03-07",
+    telefono : "2200220022"
   },
   {
-    id:"4",
-    nombre: "Mariel",
-    departamento: "Compras",
-    fechaIngreso: "13-02-2022",
-    cumpleanios: "21-07-2001",
+    nombre : "Cuquita Mercado",
+    cumpleanios : " 04-07",
+    telefono : "2228113124"
   },
   {
-    id:"5",
-    nombre: "Gloria",
-    departamento: "Capacitación",
-    fechaIngreso: "01-09-2009",
-    cumpleanios: "16-09-1988",
+    nombre : "Manuel Jimenez Mercado",
+    cumpleanios : "04-07",
+    telefono : ""
   },
   {
-    id:"6",
-    nombre: "Jair",
-    departamento: "Logística",
-    fechaIngreso: "16-08-2011",
-    cumpleanios: "02-04-1979",
+    nombre : "Claudia Monter",
+    cumpleanios : "07-07",
+    telefono : "2223107146"
   },
   {
-    id:"7",
-    nombre: "Guillermina",
-    departamento: "Dirección",
-    fechaIngreso: "01-02-2008",
-    cumpleanios: "30-12-1951",
+    nombre : "Maximiliano Ortega",
+    cumpleanios : "15-07",
+    telefono: "2431035061"
   },
   {
-    id:"8",
-    nombre: "Raul",
-    departamento: "Desarrollo",
-    fechaIngreso: "13-02-2023",
-    cumpleanios: "28-04-1983",
+    nombre : "Alejandro Bermejo",
+    cumpleanios : "18-07",
+    telefono : "2227478500"
   },
   {
-    id:"9",
-    nombre: "Mario 2",
-    departamento: "Desarrollo",
-    fechaIngreso: "03-10-2022",
-    cumpleanios: "28-04-1983",
+    nombre : "Ma Paula",
+    cumpleanios : "18-07",
+    telefono : ""
   },
   {
-    id:"10",
-    nombre: "Elvira 2",
-    departamento: "Ventas",
-    fechaIngreso: "16-07-2022",
-    cumpleanios: "01-07-1999",
+    nombre: "Pablo",
+    cumpleanios : "24-07",
+    telefono : ""
   },
   {
-    id:"11",
-    nombre: "Axel 2",
-    departamento: "Soporte",
-    fechaIngreso: "03-10-2022",
-    cumpleanios: "22-07-1988",
+    nombre : "Tita Granados",
+    cumpleanios : "30-07",
+    telefono: ""
+  },
+  // cumpleaños de agosto 
+  {
+    nombre : "Jesica Luna",
+    cumpleanios : "01-08",
+    telefono : "5514519169"
   },
   {
-    id:"12",
-    nombre: "Mariel 2",
-    departamento: "Compras",
-    fechaIngreso: "13-02-2022",
-    cumpleanios: "21-07-2001",
+    nombre : "Blaquita Mercado",
+    cumpleanios : "04-08",
+    telefono : "",
   },
   {
-    id:"13",
-    nombre: "Gloria 2",
-    departamento: "Capacitación",
-    fechaIngreso: "01-09-2009",
-    cumpleanios: "16-09-1988",
+    nombre : "Juan Carlos",
+    cumpleanios : "08-08",
+    telefono : ""
   },
   {
-    id:"14",
-    nombre: "Jair 2",
-    departamento: "Logística",
-    fechaIngreso: "16-08-2011",
-    cumpleanios: "02-04-1979",
+    nombre : "Sofi Hernández R. Castro",
+    cumpleanios : "11-08",
+    telefono : "2212723058 o 2223839070"
   },
   {
-    id:"15",
-    nombre: "Guillermina 2",
-    departamento: "Dirección",
-    fechaIngreso: "01-02-2008",
-    cumpleanios: "30-12-1951",
+    nombre : "Laura Vallejo D",
+    cumpleanios : "11-08",
+    telefono : ""
   },
   {
-    id:"16",
-    nombre: "Raul 2",
-    departamento: "Desarrollo",
-    fechaIngreso: "13-02-2023",
-    cumpleanios: "28-04-1983",
+    nombre : "Manuel Ortega",
+    cumpleanios : "14-08",
+    telefono : "2431035061"
   },
   {
-    id:"17",
-    nombre: "Mario 3",
-    departamento: "Desarrollo",
-    fechaIngreso: "03-10-2022",
-    cumpleanios: "28-04-1983",
+    nombre : "Karelly Ortega",
+    cumpleanios : "22-08",
+    telefono : ""
   },
   {
-    id:"18",
-    nombre: "Elvira 3",
-    departamento: "Ventas",
-    fechaIngreso: "16-07-2022",
-    cumpleanios: "10-07-1995",
+    nombre: "Alberto B. Jiménez",
+    cumpleanios : "24-08",
+    telefono: "2223210492"
+  },
+  // cumpleaños de septiembre 
+  {
+    nombre : "Glo Jiménez",
+    cumpleanios : "15-09",
+    telefono : "2225647301"
   },
   {
-    id:"19",
-    nombre: "Axel 3",
-    departamento: "Soporte",
-    fechaIngreso: "03-10-2022",
-    cumpleanios: "22-07-1988",
+    nombre : "Edith Mercado",
+    cumpleanios : "16-09",
+    telefono : "2225125422"
   },
   {
-    id:"20",
-    nombre: "Mariel 3",
-    departamento: "Compras",
-    fechaIngreso: "13-02-2022",
-    cumpleanios: "21-07-2001",
+    nombre : "Lety Ruanova",
+    cumpleanios : "18-09",
+    telefono : ""
   },
   {
-    id:"21",
-    nombre: "Gloria 3",
-    departamento: "Capacitación",
-    fechaIngreso: "01-09-2009",
-    cumpleanios: "16-09-1988",
+    nombre : "Sol",
+    cumpleanios : "18-09",
+    telefono : ""
   },
   {
-    id:"22",
-    nombre: "Jair 3",
-    departamento: "Logística",
-    fechaIngreso: "16-08-2011",
-    cumpleanios: "02-04-1979",
+    nombre : "Rafael Mercado",
+    cumpleanios : "21-09",
+    telefono : ""
   },
   {
-    id:"23",
-    nombre: "Guillermina 3",
-    departamento: "Dirección",
-    fechaIngreso: "01-02-2008",
-    cumpleanios: "30-12-1951",
+    nombre : "Uriel Granados",
+    cumpleanios : "24-09",
+    telefono : ""
+  },
+  // cumpleaños de octubre 
+  {
+    nombre : "Mariel HR Monterrubio",
+    cumpleanios : "12-10",
+    telefono : "2227303372"
+  },
+  // cumpleaños de noviembre 
+  {
+    nombre : "Elvira Monterrubio",
+    cumpleanios : "14-11",
+    telefono : "2227303372"
   },
   {
-    id:"24",
-    nombre: "Raul 3",
-    departamento: "Desarrollo",
-    fechaIngreso: "13-02-2023",
-    cumpleanios: "28-04-1983",
-  },
+    nombre : "Axel HR Monterrubio",
+    cumpleanios : "21-11",
+    telefono : "2222592173"
+  }
 ];
