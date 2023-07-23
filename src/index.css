@@ -15,3 +15,8 @@ body {
   font-weight: 400;
   font-size: 15px;
 }
+.birth__table {
+  background: url(./assets/happy-birthday-background-01.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}

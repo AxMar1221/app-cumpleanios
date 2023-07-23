@@ -5,7 +5,7 @@ import { BirthdayOfTheDay, BirthdayTable, BirthdaysOfMonth, GreetingCardApp, Hom
 export const HomeRouter = () => {
   return (
     <>
-      <div className="mt-3">
+      <div>
         <Routes>
           <Route path="home" element={<HomeApp />}/>
           <Route path="birthDay" element={<BirthdayOfTheDay />}/>
