@@ -1,67 +1,197 @@
 import { useState } from "react";
 import { data } from "../../data";
+import {
+  Button,
+  CardContent,
+  FormControl,
+  Grid,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  TextField,
+  Typography,
+} from "@mui/material";
+import { grey } from "@mui/material/colors";
+import {
+  CardGiftcardOutlined,
+  CelebrationOutlined,
+  NavigateBeforeOutlined,
+  NavigateNextOutlined,
+} from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
-const ITEMS_PER_PAGE = 10;
+const itemsPerPage = 10;
 
 export const BirthdayTable = () => {
   const [currentPage, setCurrentPage] = useState(0);
+  const [search, setSearch] = useState("");
+  const [filterData, setFilterData] = useState([]);
 
-  // Calcular el índice inicial y final de los registros para la página actual
-  const startIndex = currentPage * ITEMS_PER_PAGE;
-  const endIndex = startIndex + ITEMS_PER_PAGE;
+  const startIndex = currentPage * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
 
-  // Obtener los registros para la página actual
-  const currentDataPage = data.slice(startIndex, endIndex);
+  const totalPages = Math.ceil(data.length / itemsPerPage);
 
-  // Calcular la cantidad total de páginas
-  const totalPages = Math.ceil(data.length / ITEMS_PER_PAGE);
-
-  // Función para avanzar a la siguiente página
   const goToNextPage = () => {
     setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages - 1));
   };
 
-  // Función para retroceder a la página anterior
   const goToPrevPage = () => {
     setCurrentPage((prevPage) => Math.max(prevPage - 1, 0));
   };
 
+  const searchFilter = (searchTerm) => {
+    return data.filter((ele) => {
+      if (
+        ele.nombre
+          .toString()
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase()) ||
+        ele.cumpleanios
+          .toString()
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase())
+      ) {
+        return ele;
+      }
+    });
+  };
+
+  const searchTerm = (e) => {
+    const searchTerm = e.target.value;
+    setSearch(searchTerm);
+    const searchResult = searchFilter(searchTerm);
+    setFilterData(searchResult);
+    setCurrentPage(0);
+  };
+
+  const displayData = search ? filterData : data;
+  const currentDataPages = displayData.slice(startIndex, endIndex);
+
   return (
-    <div>
-      <h2>Todos los Registros (Tabla Paginada)</h2>
-      <table>
-        <thead>
-          <tr>
-            <th></th>
-            <th>Nombre</th>
-            <th>Departamento</th>
-            <th>Fecha de Ingreso</th>
-            <th>Cumpleaños</th>
-          </tr>
-        </thead>
-        <tbody>
-          {currentDataPage.map((person) => (
-            <tr key={person.nombre}>
-              <td>{person.id}</td>
-              <td>{person.nombre}</td>
-              <td>{person.departamento}</td>
-              <td>{person.fechaIngreso}</td>
-              <td>{person.cumpleanios}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <div>
-        <button onClick={goToPrevPage} disabled={currentPage === 0}>
-          Anterior
-        </button>
-        <button
-          onClick={goToNextPage}
-          disabled={currentPage === totalPages - 1}
-        >
-          Siguiente
-        </button>
-      </div>
-    </div>
+    <>
+      <CardContent className="birth__table">
+        <Typography align="center" variant="h4" color="error">
+          📅 🎉 Todos los cumpleañeros 🥳 🎂
+        </Typography>
+
+        <Grid container>
+          <Grid
+            container
+            direction="row"
+            justifyContent="flex-end"
+            alignItems="flex-end"
+          >
+            <FormControl className="d-flex mb-2 col-6" role="search">
+              <TextField
+                label="Buscar cumpleañero... 🔍"
+                type="text"
+                name="search"
+                margin="dense"
+                value={search}
+                variant="outlined"
+                color="error"
+                onChange={searchTerm}
+                focused
+              />
+            </FormControl>
+          </Grid>
+          <Grid
+            container
+            direction="row"
+            item
+            xs={12}
+            sm={12}
+            md={12}
+            lg={12}
+            xl={12}
+          >
+            <TableContainer component={Paper}>
+              <Table
+                sx={{ minWidth: 650 }}
+                size="small"
+                aria-label="a dense table"
+              >
+                <TableHead>
+                  <TableRow>
+                    <TableCell align="center"></TableCell>
+                    <TableCell align="center">Nombre</TableCell>
+                    <TableCell align="center">Cumpleaños</TableCell>
+                    <TableCell align="center">Teléfono</TableCell>
+                    <TableCell align="center">Enviar tarjeta</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {currentDataPages.map((person) => (
+                    <TableRow
+                      key={person.nombre}
+                      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                    >
+                      <TableCell align="center">{person.id}</TableCell>
+                      <TableCell align="left">{person.nombre}</TableCell>
+                      <TableCell align="center">
+                        <Button
+                          size="small"
+                          variant="contained"
+                          sx={{ color: grey[50] }}
+                          startIcon={<CelebrationOutlined />}
+                        >
+                          {person.cumpleanios}
+                        </Button>
+                      </TableCell>
+                      <TableCell align="center">
+                        {person.departamento}
+                      </TableCell>
+                      <TableCell align="center">
+                        <Link to={`/greetingCard/${person.id}`} className="btn">
+                          <Button
+                            size="small"
+                            variant="contained"
+                            sx={{ color: grey[50] }}
+                            startIcon={<CardGiftcardOutlined />}
+                          >
+                            Enviar tarjeta
+                          </Button>
+                        </Link>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+            <Grid
+              container
+              direction="row"
+              justifyContent="flex-end"
+              alignItems="flex-end"
+            >
+              <Button
+                color="error"
+                sx={{ border: 1, margin: 1 }}
+                onClick={goToPrevPage}
+                disabled={currentPage === 0}
+                variant="contained"
+              >
+                <NavigateBeforeOutlined />
+                Anterior
+              </Button>
+              <Button
+                color="error"
+                sx={{ border: 1, margin: 1 }}
+                onClick={goToNextPage}
+                disabled={currentPage === totalPages - 1}
+                variant="contained"
+              >
+                Siguiente <NavigateNextOutlined />
+              </Button>
+            </Grid>
+          </Grid>
+        </Grid>
+      </CardContent>
+    </>
   );
 };
