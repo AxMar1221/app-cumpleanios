@@ -84,7 +84,7 @@ export const BirthdayTable = () => {
   return (
     <>
       <CardContent className="birth__table">
-        <Typography align="center" variant="h4" color="error">
+        <Typography align="center" variant="h4" sx={{ color: grey[50]}}>
           📅 🎉 Todos los cumpleañeros 🥳 🎂
         </Typography>
 
