@@ -13,7 +13,7 @@ export const HomeRouter = () => {
           <Route path="birthTable" element={<BirthdayTable />}/>
           <Route path="greetingCard" element={<GreetingCardApp />}/>
 
-          <Route path="/" element={<Navigate to="/home" />}/>
+          <Route path="/*" element={<Navigate to="/home" />}/>
           
         </Routes>
       </div>  

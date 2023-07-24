@@ -3,15 +3,17 @@ import { Link } from "@mui/material";
 import { NavLink } from "react-router-dom";
 
 export const NavBar = () => {
-
   return (
-    <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
-        <Link href="/home" underline="hover">
-      <CakeOutlined
-        fontSize="large"
-        sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
+    <nav
+      className="navbar navbar-expand-sm navbar-dark bg-dark"
+      style={{ position: "fixed", width: "100%", zIndex: 100 }}
+    >
+      <Link href="/home" underline="hover">
+        <CakeOutlined
+          fontSize="large"
+          sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
         />
-        </Link>
+      </Link>
 
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div className="navbar-nav">
@@ -53,10 +55,9 @@ export const NavBar = () => {
             }
             to="/greetingCard"
           >
-            Envía una tarjeta al cumpleañero 🎴
+            Envía una tarjeta de felicitación 🎴
           </NavLink>
         </div>
-
       </div>
     </nav>
   );
