@@ -5,15 +5,12 @@ import {
   CardContent,
   FormControl,
   Grid,
-  Paper,
   Table,
   TableBody,
   TableCell,
   TableContainer,
-  TableHead,
   TableRow,
   TextField,
-  Typography,
 } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import {
@@ -74,28 +71,24 @@ export const BirthdayTable = () => {
   const displayData = search ? filterData : data;
   const currentDataPages = displayData.slice(startIndex, endIndex);
 
-
   const sendWhatsMessage = (phone) => {
-    const message = '¡Feliz cumpleaños!';
-    const whatsURL = `https://api.whatsapp.com/send/?phone=+52${phone}&text=${encodeURIComponent(message)}`;
+    const message = "¡Feliz cumpleaños! 🥳 🎂";
+    const whatsURL = `https://api.whatsapp.com/send/?phone=+52${phone}&text=${encodeURIComponent(
+      message
+    )}`;
     window.open(whatsURL, "_blank");
   };
 
   return (
     <>
-      <CardContent className="birth__table">
-        <Typography align="center" variant="h4" sx={{ color: grey[50]}}>
-          📅 🎉 Todos los cumpleañeros 🥳 🎂
-        </Typography>
-
+      <CardContent className="birth__table" sx={{ paddingTop: 15 }}>
         <Grid container>
           <Grid
             container
             direction="row"
-            justifyContent="flex-end"
-            alignItems="flex-end"
+            style={{ justifyContent: "right", width: "90%" }}
           >
-            <FormControl className="d-flex mb-2 col-6" role="search">
+            <FormControl className="d-flex mb-2 col-4" role="search">
               <TextField
                 label="Buscar cumpleañero... 🔍"
                 type="text"
@@ -118,30 +111,38 @@ export const BirthdayTable = () => {
             md={12}
             lg={12}
             xl={12}
+            style={{ justifyContent: "center" }}
           >
-            <TableContainer component={Paper}>
+            <TableContainer
+              // component={Paper}
+              style={{ width: "80%" }}
+            >
               <Table
                 sx={{ minWidth: 650 }}
                 size="small"
                 aria-label="a dense table"
               >
-                <TableHead>
-                  <TableRow>
-                    <TableCell></TableCell>
-                    <TableCell align="left">Nombre</TableCell>
-                    <TableCell align="center">Cumpleaños</TableCell>
-                    <TableCell align="center">Teléfono</TableCell>
-                    <TableCell align="center">Enviar tarjeta</TableCell>
-                  </TableRow>
-                </TableHead>
                 <TableBody>
                   {currentDataPages.map((person, index) => (
                     <TableRow
                       key={person.nombre}
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                     >
-                      <TableCell align="center">{rowStart + index}</TableCell>
-                      <TableCell align="left">{person.nombre}</TableCell>
+                      <TableCell align="center">
+                        <Button size="small" variant="contained" color="error">
+                          {rowStart + index}
+                        </Button>
+                      </TableCell>
+                      <TableCell align="left">
+                        <Button
+                          color="secondary"
+                          size="small"
+                          variant="contained"
+                          sx={{ color: grey[50] }}
+                        >
+                          {person.nombre}
+                        </Button>
+                      </TableCell>
                       <TableCell align="center">
                         <Button
                           size="small"
@@ -162,7 +163,6 @@ export const BirthdayTable = () => {
                             sx={{ color: grey[50] }}
                             startIcon={<WhatsApp />}
                             onClick={() => sendWhatsMessage(person.telefono)}
-
                           >
                             Enviar WhatsApp
                           </Button>
@@ -178,8 +178,12 @@ export const BirthdayTable = () => {
                         )}
                       </TableCell>
                       <TableCell align="center">
-                        <Link to={`/greetingCard/${person.nombre}`} className="btn">
+                        <Link
+                          to={`/greetingCard/${person.nombre}`}
+                          className="btn"
+                        >
                           <Button
+                            color="error"
                             size="small"
                             variant="contained"
                             sx={{ color: grey[50] }}
@@ -199,6 +203,7 @@ export const BirthdayTable = () => {
               direction="row"
               justifyContent="flex-end"
               alignItems="flex-end"
+              style={{ width: "80%" }}
             >
               <Button
                 color="error"
