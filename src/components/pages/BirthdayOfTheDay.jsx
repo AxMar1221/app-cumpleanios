@@ -39,8 +39,8 @@ export const BirthdayOfTheDay = () => {
   };
   return (
     <>
-      <CardContent className="birth__month" sx={{ paddingTop: 15 }}>
-        <Typography align="left" variant="h3" color="error">
+      <CardContent className="birth__month" sx={{ paddingTop: 10 }}>
+        <Typography align="left" variant="h5" color="error">
           📅 🎉 Cumpleaños de hoy 🥳 🎂
         </Typography>
 

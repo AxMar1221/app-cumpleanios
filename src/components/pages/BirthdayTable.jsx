@@ -23,7 +23,7 @@ import {
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 
-const itemsPerPage = 10;
+const itemsPerPage = 5;
 
 export const BirthdayTable = () => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -81,7 +81,7 @@ export const BirthdayTable = () => {
 
   return (
     <>
-      <CardContent className="birth__table" sx={{ paddingTop: 15 }}>
+      <CardContent className="birth__table" sx={{ paddingTop: 20 }}>
         <Grid container>
           <Grid
             container
