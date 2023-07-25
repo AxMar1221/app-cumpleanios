@@ -1,14 +1,14 @@
-import { CardContent, Typography } from "@mui/material";
-import { red } from "@mui/material/colors";
+import { CardContent, Grid } from "@mui/material"
+
 
 export const GreetingCardApp = () => {
   return (
     <>
-      <CardContent className="" sx={{ paddingTop: 15 }}>
-        <Typography align="center" variant="h4" sx={{ color: red[400] }}>
-          📅 🎉 Envía una tarjeta de felicitación 🥳 🎂
-        </Typography>
-      </CardContent>
+    <CardContent className="birth__table" sx={{ paddingTop: 20 }}>
+      <Grid container>
+        
+      </Grid>
+    </CardContent>
     </>
-  );
-};
+  )
+}

@@ -17,13 +17,16 @@ import {
   WhatsApp,
 } from "@mui/icons-material";
 
+
 function getBirthdaysOfDay() {
   const today = new Date();
   const currentDay = today.getDate();
+  const currentMonth = today.getMonth() + 1;
+
 
   return data.filter((person) => {
-    const birthdayToday = parseInt(person.cumpleanios.split("-")[0]);
-    return birthdayToday === currentDay;
+    const [day, month] = person.cumpleanios.split("-");
+    return parseInt(day) === currentDay && parseInt(month) === currentMonth
   });
 }
 

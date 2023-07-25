@@ -179,7 +179,7 @@ export const BirthdayTable = () => {
                       </TableCell>
                       <TableCell align="center">
                         <Link
-                          to={`/greetingCard/${person.nombre}`}
+                          to={`/greetingCard/${person.id}`}
                           className="btn"
                         >
                           <Button

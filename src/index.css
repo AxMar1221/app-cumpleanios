@@ -28,3 +28,10 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
+.births {
+  height: 600px;
+  text-transform: uppercase;
+  background: url(./assets/happy-birthday-background-01.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
