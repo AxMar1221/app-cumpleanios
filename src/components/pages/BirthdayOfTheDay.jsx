@@ -90,7 +90,7 @@ export const BirthdayOfTheDay = () => {
               variant="h3"
               sx={{ color: blue[900] }}
             >
-              No hay cumpleaños este día.
+              No hay cumpleaños en este día.
             </Typography>
           )}
         </Grid>
