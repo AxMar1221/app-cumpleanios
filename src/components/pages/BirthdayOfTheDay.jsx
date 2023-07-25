@@ -9,37 +9,17 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import { data } from "../../data";
 import { blue, grey } from "@mui/material/colors";
 import {
   CakeOutlined,
   CelebrationOutlined,
   WhatsApp,
 } from "@mui/icons-material";
-
-
-function getBirthdaysOfDay() {
-  const today = new Date();
-  const currentDay = today.getDate();
-  const currentMonth = today.getMonth() + 1;
-
-
-  return data.filter((person) => {
-    const [day, month] = person.cumpleanios.split("-");
-    return parseInt(day) === currentDay && parseInt(month) === currentMonth
-  });
-}
+import { getBirthdaysOfDay, sendWhatsMessage } from "../../helpers";
 
 export const BirthdayOfTheDay = () => {
   const days = getBirthdaysOfDay();
 
-  const sendWhatsMessage = (phone) => {
-    const message = "¡Feliz cumpleaños! 🥳 🎂";
-    const whatsURL = `https://api.whatsapp.com/send/?phone=+52${phone}&text=${encodeURIComponent(
-      message
-    )}`;
-    window.open(whatsURL, "_blank");
-  };
   return (
     <>
       <CardContent className="birth__month" sx={{ paddingTop: 10 }}>

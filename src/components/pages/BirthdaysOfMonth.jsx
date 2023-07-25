@@ -9,33 +9,16 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import { data } from "../../data";
 import {
   CakeOutlined,
   CelebrationOutlined,
   WhatsApp,
 } from "@mui/icons-material";
 import { blue, grey } from "@mui/material/colors";
-
-function getBirthdaysOfMonth() {
-  const month = new Date();
-  const currentMonth = month.getMonth() + 1;
-  return data.filter((person) => {
-    const birthdayMonth = parseInt(person.cumpleanios.split("-")[1]);
-    return birthdayMonth === currentMonth;
-  });
-}
+import { getBirthdaysOfMonth, sendWhatsMessage } from "../../helpers";
 
 export const BirthdaysOfMonth = () => {
   const months = getBirthdaysOfMonth();
-
-  const sendWhatsMessage = (phone) => {
-    const message = "¡Feliz cumpleaños! 🥳 🎂";
-    const whatsURL = `https://api.whatsapp.com/send/?phone=+52${phone}&text=${encodeURIComponent(
-      message
-    )}`;
-    window.open(whatsURL, "_blank");
-  };
 
   return (
     <>

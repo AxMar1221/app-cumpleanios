@@ -22,6 +22,7 @@ import {
   WhatsApp,
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import { sendWhatsMessage } from "../../helpers";
 
 const itemsPerPage = 5;
 
@@ -70,14 +71,6 @@ export const BirthdayTable = () => {
 
   const displayData = search ? filterData : data;
   const currentDataPages = displayData.slice(startIndex, endIndex);
-
-  const sendWhatsMessage = (phone) => {
-    const message = "¡Feliz cumpleaños! 🥳 🎂";
-    const whatsURL = `https://api.whatsapp.com/send/?phone=+52${phone}&text=${encodeURIComponent(
-      message
-    )}`;
-    window.open(whatsURL, "_blank");
-  };
 
   return (
     <>
