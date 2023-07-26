@@ -17,6 +17,8 @@ import {
 } from "@mui/icons-material";
 import { getBirthdaysOfDay, sendWhatsMessage } from "../../helpers";
 
+console.log("Rama creada por Ax2111")
+
 export const BirthdayOfTheDay = () => {
   const days = getBirthdaysOfDay();
 
