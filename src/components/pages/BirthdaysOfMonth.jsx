@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Button,
   CardContent,
@@ -12,6 +13,8 @@ import {
 import {
   CakeOutlined,
   CelebrationOutlined,
+  NavigateBeforeOutlined,
+  NavigateNextOutlined,
   WhatsApp,
 } from "@mui/icons-material";
 import { blue, grey } from "@mui/material/colors";
@@ -19,6 +22,21 @@ import { getBirthdaysOfMonth, sendWhatsMessage } from "../../helpers";
 
 export const BirthdaysOfMonth = () => {
   const months = getBirthdaysOfMonth();
+  const itemsPerPage = 5;
+  const totalPages = Math.ceil(months.length / itemsPerPage);
+
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const handleNextPage = () => {
+    setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
+  };
+
+  const handlePrevPage = () => {
+    setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
+  };
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const visibleMonths = months.slice(startIndex, startIndex + itemsPerPage);
 
   return (
     <>
@@ -28,11 +46,11 @@ export const BirthdaysOfMonth = () => {
         </Typography>
 
         <Grid container direction="row" item xs={9} sm={9} md={7} lg={7} xl={7}>
-          {months.length > 0 ? (
+          {visibleMonths.length > 0 ? (
             <TableContainer sx={{ padding: 2 }}>
               <Table sx={{ minWidth: 650 }} size="small">
                 <TableBody>
-                  {months.map((person, i) => (
+                  {visibleMonths.map((person, i) => (
                     <TableRow key={i}>
                       <TableCell sx={{ color: grey[50] }}>
                         <Button
@@ -82,6 +100,26 @@ export const BirthdaysOfMonth = () => {
                   ))}
                 </TableBody>
               </Table>
+              <div style={{ display: "flex", justifyContent: "right", marginTop: "10px" }}>
+                <Button
+                  variant="contained"
+                  color="error"
+                  onClick={handlePrevPage}
+                  disabled={currentPage === 1}
+                >
+                <NavigateBeforeOutlined />
+                  Anterior
+                </Button>
+                <Button
+                  variant="contained"
+                  color="error"
+                  onClick={handleNextPage}
+                  disabled={currentPage === totalPages}
+                  style={{ marginLeft: "10px" }}
+                >
+                  Siguiente <NavigateNextOutlined />
+                </Button>
+              </div>
             </TableContainer>
           ) : (
             <Typography
